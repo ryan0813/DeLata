@@ -8,5 +8,11 @@
 #error this library is not compatible with the selected board
 #endif
 
+namespace dlt
+{
+
+void setTimer(int frequency);
+
+}
 
 #endif // __DELATA_H__
