@@ -5,7 +5,7 @@
 #include "Arduino.h"
 #include <SPI.h>
 #include <SD.h>
-#include <Adafruit_GPS.h>
+//#include <Adafruit_GPS.h>
 #include "Adafruit_VC0706.h"
 #include <RH_RF69.h>
 
@@ -23,13 +23,13 @@ void startTimer4(int frequency, void (*fun_ptr)(void));
 void print(String msg);
 void sd_init();
 void cam_init();
-void gps_init();
+//void gps_init();
 void clear_data_buffer(void);
 void next_filename(char *fname);
 void check_task(void);
 void execute_task();
 void set_flag(void);
-void gps_getdata();
+//void gps_getdata();
 void send_data(char *data);
 void radio_init(float frequency);
 void radio_init_receiver(float frequency);

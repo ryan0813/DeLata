@@ -4,7 +4,7 @@
 #define data_read_count_MAX   15
 
 Adafruit_VC0706 cam = Adafruit_VC0706(&Serial1);
-Adafruit_GPS GPS = Adafruit_GPS();
+//Adafruit_GPS GPS = Adafruit_GPS();
 
 static char *(*get_data)(void) = NULL;
 
@@ -23,7 +23,7 @@ File sensors_file;      // sensor data file
 
 uint8_t data_read_count = 0;
 
-char gps_data[100];
+//char gps_data[100];
 
 String data_values[data_read_count_MAX];
 String *p_data_val = NULL;
@@ -79,7 +79,7 @@ void begin(boolean debug, uint8_t team_id, float frequency) {
   camera_task = CAMERA_NONE;
   sensor_task = SENSOR_NONE;
 
-  gps_init();
+  //gps_init();
   sd_init();
   cam_init();
   radio_init(frequency);
@@ -120,9 +120,9 @@ void do_sensor_tasks(void) {
 
       sensor_func_result = sensor_func();
       
-      sprintf(gps_data, "I%02d:%02d:%02d,J%d,K%0.4f,L%0.4f,M%f,N%f,O%f,P%d", (GPS.hour + 8), GPS.minute, GPS.seconds, GPS.fix, GPS.latitudeDegrees, GPS.longitudeDegrees, GPS.speed, GPS.angle, GPS.altitude, GPS.satellites);
+      //sprintf(gps_data, "I%02d:%02d:%02d,J%d,K%0.4f,L%0.4f,M%f,N%f,O%f,P%d", (GPS.hour + 8), GPS.minute, GPS.seconds, GPS.fix, GPS.latitudeDegrees, GPS.longitudeDegrees, GPS.speed, GPS.angle, GPS.altitude, GPS.satellites);
 
-      sprintf(all_data, "G%d,H%d,%s,%s,!end", _team_id, packet_cnt++, gps_data, sensor_data);
+      sprintf(all_data, "G%d,H%d,%s,%s,!end", _team_id, packet_cnt++, /*gps_data*/, sensor_data);
       print(all_data);
 
       // Form data for transmission
@@ -274,6 +274,7 @@ void cam_init(){
   }
 }
 
+/*
 void gps_init(){
   GPS.begin();
   GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
@@ -294,6 +295,6 @@ void gps_getdata(){
       if (!GPS.parse(GPS.lastNMEA())) return;
     }
   //}
-}
+}*/
 
 }
