@@ -1,8 +1,8 @@
 #include "DeLata.h"
 
-#define RFM69s_CS 6
-#define RFM69s_RST 5
-#define RFM69s_INT 15
+#define RFM69s_CS 9
+#define RFM69s_RST 10
+#define RFM69s_INT 11
 
 #define RFM69r_CS 4
 #define RFM69r_RST 2
