@@ -1,6 +1,6 @@
 
-#ifndef __DELATA_H__
-#define __DELATA_H__
+#ifndef __COMET_LIBRARY_H__
+#define __COMET_LIBRARY_H__
 
 #include "Arduino.h"
 #include <SPI.h>

@@ -1,5 +1,5 @@
 
-#include "DeLata.h"
+#include "Comet_Library.h"
 
 #define data_read_count_MAX   15
 
@@ -80,6 +80,11 @@ void begin(boolean debug, uint8_t team_id, float frequency) {
   sensor_task = SENSOR_NONE;
 
   //gps_init();
+  
+  //force here for now
+  pinMode(9, OUTPUT);
+  digitalWrite(9, HIGH);
+
   sd_init();
   cam_init();
   radio_init(frequency);
@@ -101,7 +106,7 @@ void begin_rcv(boolean debug, float frequency){
 }
 
 void set_flag(void){
-	gps_getdata();
+	//gps_getdata();
   if (cnt++ > 2){
     task_flag = 1;
     cnt = 0;	
@@ -121,8 +126,9 @@ void do_sensor_tasks(void) {
       sensor_func_result = sensor_func();
       
       //sprintf(gps_data, "I%02d:%02d:%02d,J%d,K%0.4f,L%0.4f,M%f,N%f,O%f,P%d", (GPS.hour + 8), GPS.minute, GPS.seconds, GPS.fix, GPS.latitudeDegrees, GPS.longitudeDegrees, GPS.speed, GPS.angle, GPS.altitude, GPS.satellites);
-
-      sprintf(all_data, "G%d,H%d,%s,%s,!end", _team_id, packet_cnt++, /*gps_data*/, sensor_data);
+      //sprintf(all_data, "G%d,H%d,%s,%s,!end", _team_id, packet_cnt++, gps_data, sensor_data);
+      
+      sprintf(all_data, "G%d,H%d,%s,!end", _team_id, packet_cnt++, sensor_data);
       print(all_data);
 
       // Form data for transmission
@@ -229,21 +235,21 @@ void check_task(void){
 }
 
 void execute_task(){
-  gps_getdata();
+  //gps_getdata();
 
   if (task_flag){
-  	gps_getdata();
+  	//gps_getdata();
   	task_flag = 0;
     check_task();
   }
 
   switch (main_task) {
   case TASK_CAMERA:
-    gps_getdata();
+    //gps_getdata();
     do_camera_tasks();
     break;
   case TASK_SENSORS:
-    gps_getdata();
+    //gps_getdata();
     do_sensor_tasks();
     break;
   }	
