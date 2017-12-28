@@ -1,18 +1,10 @@
 #include <DeLata.h>
 
 /* Pinouts
- * Camera 5V  | Radio VIN | GPS VIN | 5V 
- * Camera GND | Radio GND | GPS GND | M0 GND 
- * Camera RX  | M0 TX
- * Camera TX  | M0 RX
- * Radio G0   | M0 15 (A1)
- * Radio SCK  | M0 SCK
- * Radio MISO | M0 MISO
- * Radio MOSI | M0 MOSI
- * Radio CS   | M0 Pin 6
- * Radio RST  | M0 Pin 5
- * GPS TX     | M0 Pin 10
- * GPS RX     | M0 Pin 11
+ * Camera 5V  | 5V 
+ * Camera GND | Comet GND 
+ * Camera RX  | Comet TX
+ * Camera TX  | Comet RX
  */
 
 #define DEBUG 1     // turn to 0 when Serial Monitor is not connected
