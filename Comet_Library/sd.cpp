@@ -1,6 +1,6 @@
 #include "DeLata.h"
 
-#define chipSelect 4
+#define chipSelect 12
 
 namespace dlt
 {
